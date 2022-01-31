@@ -9,23 +9,8 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
     />
+    <link rel="stylesheet" href="./css/product.css">
   </head>
-  <style>
-    img {
-      object-fit: contain;
-      max-width: 100%;
-    }
-
-    .primary-image {
-      height: 300px;
-    }
-
-    .images {
-      height: 150px;
-    }
-
-
-  </style>
   <body>
     <div id="app" >
       <div class="container">
@@ -141,73 +126,7 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.0.2/vue.global.js"></script>
-    <script>
-      const App = {
-        data() {
-          return {
-            products: [],
-            tempSelect: {},
-            url: "https://vue3-course-api.hexschool.io/v2",
-            path: "mmee1122",
-          };
-        },
-        methods: {
-          checkUser() {
-            axios
-              .post(`${this.url}/api/user/check`)
-              .then((res) => {
-                console.log(res.data);
-                this.getData();
-              })
-              .catch((err) => {
-                console.log(err.data);
-                window.location = "login.html";
-              });
-          },
-          getData() {
-            axios
-              .get(`${this.url}/api/${this.path}/admin/products`)
-              .then((res) => {
-                console.log(res.data);
-                this.products = res.data.products;
-              })
-              .catch((err) => {
-                console.log(err.data);
-              });
-          },
-          productSelect(product) {
-            this.tempSelect = product;
-          },
-          deleteProductBtn(product) {
-            this.products.forEach((item, index) => {
-              if (item.id === product.id) {
-                axios
-                  .delete(`${this.url}/api/${this.path}/admin/product/${product.id}`)
-                  .then((res) => {
-                    console.log(res.data);
-                    this.getData()
-                  })
-                  .catch((err) => {
-                    console.log(err.data);
-                  });
-              }
-            });
-          },
-        },
-        created() {
-          const token = document.cookie.replace(
-            /(?:(?:^|.*;\s*)meToken\s*\=\s*([^;]*).*$)|^.*$/,
-            "$1"
-          );
-          axios.defaults.headers.common["Authorization"] = token;
-          this.checkUser();
-        },
-        mounted(){
+    <script src="./js/product.js" type="module"></script>
 
-        }
-      };
-      Vue.createApp(App).mount("#app");
-    </script>
   </body>
 </html>
