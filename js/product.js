@@ -19,7 +19,7 @@ const App = {
           })
           .catch((err) => {
             console.log(err.data);
-            window.location = "login.html";
+            window.location = "index.html";
           });
       },
       getData() {
