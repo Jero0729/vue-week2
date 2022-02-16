@@ -34,28 +34,10 @@
                   <td width="120">{{ (product.origin_price).toLocaleString() }}</td>
                   <td width="120">{{ (product.price).toLocaleString() }}</td>
                   <td width="150">
-                    <div
-                      class="form-check form-switch d-flex justify-content-center"
-                    >
-                      <input
-                        v-model="product.is_enabled"
-                        class="form-check-input me-sm-2"
-                        type="checkbox"
-                        :id="product.id"
-                        :checked="product.is_enabled"
-                      />
-                      <label
-                        v-if="product.is_enabled"
-                        class="form-check-label d-none d-sm-block"
-                        :for="product.id"
-                        >啟用</label
-                      >
-                      <label
-                        v-else
-                        class="form-check-label d-none d-sm-block"
-                        :for="product.id"
-                        >未啟用</label
-                      >
+                    <div class="form-check form-switch">
+                      <input v-model="product.is_enabled" class="form-check-input me-sm-2" type="checkbox" :id="product.id" :true-value=1 :false-value=0>
+                      <label v-if="product.is_enabled" class="form-check-label d-none d-sm-block " :for="product.id">啟用</label>
+                      <label v-else class="form-check-label d-none d-sm-block " :for="product.id">未啟用</label>
                     </div>
                   </td>
                   <td width="120">
