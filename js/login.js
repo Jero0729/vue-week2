@@ -24,7 +24,7 @@ import {createApp} from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.0.9/vue.es
                 window.location = "product.html";
               })
               .catch((err) => {
-                alert(err.response.data.message);
+                alert(err.data.message);
               });
           },
         },

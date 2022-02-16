@@ -14,19 +14,17 @@ const App = {
         axios
           .post(`${this.url}/api/user/check`)
           .then((res) => {
-            console.log(res.data);
             this.getData();
           })
           .catch((err) => {
-            console.log(err.data);
+            alert(err.data);
             window.location = "index.html";
           });
       },
       getData() {
         axios
-          .get(`${this.url}/api/${this.path}/admin/products`)
+          .get(`${this.url}/api/${this.path}/admin/products/all`)
           .then((res) => {
-            console.log(res.data);
             this.products = res.data.products;
           })
           .catch((err) => {
@@ -35,21 +33,6 @@ const App = {
       },
       productSelect(product) {
         this.tempSelect = product;
-      },
-      deleteProductBtn(product) {
-        this.products.forEach((item, index) => {
-          if (item.id === product.id) {
-            axios
-              .delete(`${this.url}/api/${this.path}/admin/product/${product.id}`)
-              .then((res) => {
-                console.log(res.data);
-                this.getData()
-              })
-              .catch((err) => {
-                console.log(err.data);
-              });
-          }
-        });
       },
     },
     created() {

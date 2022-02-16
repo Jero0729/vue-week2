@@ -25,7 +25,6 @@
                   <th width="120">售價</th>
                   <th width="150">是否啟用</th>
                   <th width="120">查看細節</th>
-                  <th width="120">刪除</th>
                 </tr>
               </thead>
               <tbody>
@@ -49,21 +48,10 @@
                       查看細節
                     </button>
                   </td>
-                  <td width="120">
-                    <button
-                      type="button"
-                      class="btn btn-sm btn-outline-danger move deleteBtn"
-                      data-action="remove"
-                      :data-id="product.id"
-                      @click="deleteProductBtn(product)"
-                    >
-                      刪除
-                    </button>
-                  </td>
                 </tr>
               </tbody>
             </table>
-            <p>目前有 <span>{{ products.length }}</span> 項產品</p>
+            <p>目前有 <span>{{ Object.keys(products).length }}</span> 項產品</p>
           </div>
           <div class="col-md-6">
             <h2>單一產品細節</h2>
@@ -107,7 +95,7 @@
       </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.9.1/axios.min.js"></script>
     <script src="./js/product.js" type="module"></script>
 
   </body>
